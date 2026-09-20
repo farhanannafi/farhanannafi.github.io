@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farhan An Nafi | Senior Cyber Threat Architect</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Ultra-Dark Ocean Blue Palette */
+            --bg-primary: #010610;            /* Ultra-deep abyssal blue */
+            --bg-secondary: #020d1e;          /* Dark ocean navy */
+            --card-bg: rgba(2, 15, 34, 0.90); /* Dark ocean panel */
+            --card-border: rgba(0, 150, 255, 0.22);
+            --accent-blue: #005bb5;           /* Deep active blue */
+            --accent-blue-bright: #0091ff;    /* Vibrant ocean blue */
+            --accent-blue-cyan: #38bdf8;      /* Electric ocean cyan */
+            --accent-white: #ffffff;
+            --accent-glow: rgba(0, 145, 255, 0.35);
+            --text-primary: #f0f6fc;
+            --text-secondary: #7d93b2;
+            --text-muted: #485c78;
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .mono { font-family: 'Fira Code', monospace; }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Dotted Grid Matrix Background with Deep Ocean Glow */
+            background-image: 
+                radial-gradient(rgba(0, 145, 255, 0.22) 1.5px, transparent 1.5px),
+                radial-gradient(at 15% 15%, rgba(0, 91, 181, 0.28) 0px, transparent 40%),
+                radial-gradient(at 85% 85%, rgba(0, 180, 216, 0.12) 0px, transparent 40%),
+                radial-gradient(at 50% 50%, rgba(1, 6, 16, 0.95) 0px, transparent 100%);
+            background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0, 0 0;
+            background-attachment: fixed;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            background: rgba(1, 6, 16, 0.88);
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+
+        .logo span { color: var(--accent-blue-bright); }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            background: rgba(0, 145, 255, 0.15);
+        }
+
+        .auth-status-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 145, 255, 0.18);
+            border: 1px solid var(--card-border);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-blue-bright);
+            font-weight: 600;
+        }
+
+        .btn-nav-auth {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-nav-auth:hover {
+            border-color: var(--accent-blue-bright);
+            background: rgba(0, 145, 255, 0.2);
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 24px 40px;
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-blue-bright) 70%, var(--accent-blue-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .typed-text {
+            color: var(--accent-blue-bright);
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-blue-bright);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-bright));
+            color: #ffffff;
+            box-shadow: 0 10px 25px -5px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(0, 145, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 50px 0 35px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span { color: var(--accent-blue-bright); }
+
+        /* OVERVIEW & ABOUT ME TABS */
+        .tab-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.9);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 16px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            background: rgba(0, 91, 181, 0.35);
+            border: 1px solid var(--accent-blue-bright);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-story-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .story-header {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+
+        .story-header span {
+            color: var(--accent-blue-bright);
+            background: linear-gradient(135deg, #ffffff, var(--accent-blue-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-body p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .story-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .pill-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pill-tag i { color: var(--accent-blue-bright); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        .skill-progress {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-bright));
+        }
+
+        /* WHAT WE OFFER - PERFECT SQUARE CARDS */
+        .services-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card-pro {
+            background: linear-gradient(145deg, rgba(2, 15, 34, 0.95), rgba(1, 6, 16, 0.98));
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 18px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(12px);
+        }
+
+        .service-card-pro:hover {
+            border-color: var(--accent-blue-bright);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px -8px var(--accent-glow);
+        }
+
+        .service-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .service-icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(0, 91, 181, 0.25);
+            border: 1px solid rgba(0, 145, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue-bright);
+            font-size: 1.05rem;
+        }
+
+        .service-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .service-card-footer {
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .btn-request {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-bright));
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+        }
+
+        .btn-request:hover {
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transform: scale(1.03);
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials-wrapper { position: relative; }
+
+        .scroll-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .scroll-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(2, 15, 34, 0.85);
+            border: 1px solid var(--accent-blue-bright);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .scroll-btn:hover {
+            background: var(--accent-blue);
+            color: #ffffff;
+        }
+
+        .reviews-carousel-wrapper {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .reviews-carousel-wrapper::-webkit-scrollbar { height: 5px; }
+        .reviews-carousel-wrapper::-webkit-scrollbar-thumb { background: var(--accent-blue-bright); border-radius: 10px; }
+
+        .review-card-compact {
+            flex: 0 0 290px;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-quote {
+            color: #cbd5e1;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+            border-left: 2px solid var(--accent-blue-bright);
+            padding-left: 8px;
+        }
+
+        .client-profile-compact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 8px;
+        }
+
+        .client-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--accent-blue-bright);
+        }
+
+        .client-info h4 { font-size: 0.82rem; color: #fff; }
+        .client-info span { font-size: 0.7rem; color: var(--text-secondary); }
+
+        /* CONTACT SECTION */
+        .contact-card-pro {
+            background: linear-gradient(135deg, rgba(2, 15, 34, 0.98), rgba(1, 6, 16, 0.99));
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 35px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .minimal-email-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 145, 255, 0.35);
+            margin-bottom: 22px;
+        }
+
+        .vault-email-link {
+            font-size: 0.98rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .social-matrix-pro {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn-pro {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .social-btn-pro:hover {
+            border-color: var(--accent-blue-bright);
+            color: #ffffff;
+            background: rgba(0, 145, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        /* MODALS & AUTH DESIGN */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 6, 16, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            padding: 28px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.95);
+            animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.88rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent-blue-bright);
+            background: rgba(0, 91, 181, 0.15);
+        }
+
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .pay-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .pay-option.selected {
+            border-color: var(--accent-blue-bright);
+            background: rgba(0, 91, 181, 0.35);
+            color: #fff;
+        }
+
+        .alert-box {
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            margin-bottom: 14px;
+            display: none;
+        }
+        .alert-error { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #fca5a5; }
+        .alert-success { background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #a7f3d0; }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            background: rgba(1, 6, 16, 0.98);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.3rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .payment-methods-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">FarhanAnNafi<span>.sec</span></div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#overview">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-status-bar" id="authContainer">
+                <button class="btn-nav-auth" onclick="openAuthModal('login')">Sign In</button>
+                <button class="btn-nav-auth" style="background:var(--accent-blue);" onclick="openAuthModal('register')">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Senior Cybersecurity Specialist & Threat Architect</h1>
+            <p class="hero-tagline mono">SPECIALIZING IN <span class="typed-text" id="typed"></span></p>
+            <p class="subtitle">Architecting enterprise security defenses, mitigating attack vulnerabilities, and conducting threat assessments globally.</p>
+            <div class="cta-group">
+                <a href="#services" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Explore Services</a>
+                <a href="#overview" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> Profile Overview</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- OVERVIEW & ABOUT ME SECTION -->
+        <section id="overview">
+            <div class="section-header">
+                <h2 class="section-title">Professional <span>Overview</span></h2>
+            </div>
+
+            <div class="tab-wrapper">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab(event, 'about')"><i class="fa-solid fa-user-shield"></i> About Me</button>
+                    <button class="tab-btn" onclick="openTab(event, 'skills')"><i class="fa-solid fa-code"></i> Core Skills</button>
+                    <button class="tab-btn" onclick="openTab(event, 'trust')"><i class="fa-solid fa-circle-check"></i> Compliance & Trust</button>
+                </div>
+
+                <!-- TAB 1: About Me -->
+                <div id="about" class="tab-content active">
+                    <div class="about-story-container">
+                        <div class="story-body">
+                            <h3 class="story-header">Hello, I'm <span>Farhan An Nafi</span></h3>
+                            <p>With over <strong>7+ years</strong> of dedicated cybersecurity field experience, I provide comprehensive penetration testing, vulnerability management, and infrastructure security auditing for enterprise networks and web applications.</p>
+                            <p>My practice centers around <strong>Kali Linux auditing, Python threat-automation, zero-day vulnerability isolation</strong>, and securing hardware/IoT environments.</p>
+
+                            <div class="story-highlights">
+                                <span class="pill-tag"><i class="fa-solid fa-clock-rotate-left"></i> 7+ Years Field Experience</span>
+                                <span class="pill-tag"><i class="fa-solid fa-terminal"></i> Kali Linux Specialist</span>
+                                <span class="pill-tag"><i class="fa-solid fa-shield-virus"></i> Threat Intelligence</span>
+                                <span class="pill-tag"><i class="fa-solid fa-code"></i> Security Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Core Skills -->
+                <div id="skills" class="tab-content">
+                    <div class="skills-grid mono">
+                        <div class="skill-card">
+                            <div class="skill-header"><span>Security Auditing & Hardening</span><span>98%</span></div>
+                            <div class="skill-progress"><span style="width: 98%;"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header"><span>Python Security Automation</span><span>95%</span></div>
+                            <div class="skill-progress"><span style="width: 95%;"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header"><span>Threat Intelligence & Analysis</span><span>92%</span></div>
+                            <div class="skill-progress"><span style="width: 92%;"></span></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header"><span>IoT & NVR Infrastructure</span><span>88%</span></div>
+                            <div class="skill-progress"><span style="width: 88%;"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Trust -->
+                <div id="trust" class="tab-content">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h5 style="color:#fff; margin-bottom:5px;"><i class="fa-solid fa-shield-cat" style="color:var(--accent-blue-bright)"></i> Strict NDA Compliance</h5>
+                            <p style="font-size:0.8rem; color:var(--text-secondary);">Full legal non-disclosure protection guaranteed for all client operations.</p>
+                        </div>
+                        <div class="skill-card">
+                            <h5 style="color:#fff; margin-bottom:5px;"><i class="fa-solid fa-file-contract" style="color:var(--accent-blue-bright)"></i> Standard Compliance</h5>
+                            <p style="font-size:0.8rem; color:var(--text-secondary);">Audits mapped to ISO 27001, OWASP Top 10, and NIST cybersecurity frameworks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT WE OFFER SECTION -->
+        <section id="services">
+            <div class="section-header">
+                <h2 class="section-title">What We <span>Offer</span></h2>
+            </div>
+
+            <div class="services-grid-container">
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-globe"></i></div>
+                        </div>
+                        <h3 class="service-title">Web Defense</h3>
+                        <p class="service-desc">WAF setup & full app security hardening.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$499</span>
+                        <button class="btn-request" onclick="initiateCheckout('Website & App Defense', 499)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-user-ninja"></i></div>
+                        </div>
+                        <h3 class="service-title">Pen-Testing</h3>
+                        <p class="service-desc">Simulated cyber attack to spot flaws.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$699</span>
+                        <button class="btn-request" onclick="initiateCheckout('Fake Attack Test (Pen-Test)', 699)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-bug"></i></div>
+                        </div>
+                        <h3 class="service-title">Bug Hunting</h3>
+                        <p class="service-desc">Deep inspection to catch logic flaws.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$550</span>
+                        <button class="btn-request" onclick="initiateCheckout('System Bug Hunt', 550)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-user-shield"></i></div>
+                        </div>
+                        <h3 class="service-title">Staff Defense</h3>
+                        <p class="service-desc">Phishing training for employees.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$399</span>
+                        <button class="btn-request" onclick="initiateCheckout('Staff Scam Protection', 399)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-cloud-shield"></i></div>
+                        </div>
+                        <h3 class="service-title">Cloud Safety</h3>
+                        <p class="service-desc">AWS, Azure & GCP configuration audit.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$599</span>
+                        <button class="btn-request" onclick="initiateCheckout('Cloud Safety Check', 599)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-kit-medical"></i></div>
+                        </div>
+                        <h3 class="service-title">Hack Recovery</h3>
+                        <p class="service-desc">Emergency malware & backdoor removal.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$799</span>
+                        <button class="btn-request" onclick="initiateCheckout('Hack Cleanup & Recovery', 799)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-notes-medical"></i></div>
+                        </div>
+                        <h3 class="service-title">Health Audit</h3>
+                        <p class="service-desc">Complete risk & patch analysis.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$450</span>
+                        <button class="btn-request" onclick="initiateCheckout('Security Health Audit', 450)">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-card-pro">
+                    <div>
+                        <div class="service-card-top">
+                            <div class="service-icon-box"><i class="fa-solid fa-comments"></i></div>
+                        </div>
+                        <h3 class="service-title">Advisory</h3>
+                        <p class="service-desc">1-on-1 strategic security guidance.</p>
+                    </div>
+                    <div class="service-card-footer">
+                        <span class="service-price">$299</span>
+                        <button class="btn-request" onclick="initiateCheckout('Security Consulting', 299)">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section id="reviews">
+            <div class="section-header">
+                <h2 class="section-title">Verified <span>Endorsements</span></h2>
+            </div>
+
+            <div class="testimonials-wrapper">
+                <div class="scroll-controls">
+                    <button class="scroll-btn" onclick="scrollCarousel(-1)"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="scroll-btn" onclick="scrollCarousel(1)"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <div class="reviews-carousel-wrapper" id="reviewsCarousel">
+                    <div class="review-card-compact">
+                        <p class="review-quote">"Nafi provided an outstanding security review for our fintech infrastructure. Solved critical vulnerabilities."</p>
+                        <div class="client-profile-compact">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="client-img" alt="Client">
+                            <div class="client-info">
+                                <h4>Tariq Mahmood</h4>
+                                <span>CTO, PayGrid Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card-compact">
+                        <p class="review-quote">"Working with Farhan was seamless. He hardened our cloud servers and resolved critical gaps."</p>
+                        <div class="client-profile-compact">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" class="client-img" alt="Client">
+                            <div class="client-info">
+                                <h4>Sarah Al-Hashimi</h4>
+                                <span>VP of Tech, Apex Global</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card-compact">
+                        <p class="review-quote">"Exceptional knowledge in infrastructure security and Linux kernel hardening. High-quality audit reports."</p>
+                        <div class="client-profile-compact">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" class="client-img" alt="Client">
+                            <div class="client-info">
+                                <h4>Dmitry Volkov</h4>
+                                <span>Head of Infra, CyberShield</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <div class="contact-card-pro">
+                <h2 class="section-title">Initiate <span>Consultation</span></h2>
+                <p class="subtitle" style="margin-bottom:20px;">Direct communication for security audits and threat architecture.</p>
+
+                <div class="minimal-email-box">
+                    <i class="fa-solid fa-envelope" style="color:var(--accent-blue-bright)"></i>
+                    <a href="mailto:farhannahiyan60@gmail.com" class="vault-email-link mono">farhannahiyan60@gmail.com</a>
+                </div>
+
+                <div class="social-matrix-pro">
+                    <a href="#" class="social-btn-pro" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-btn-pro" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn-pro" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn-pro" title="Quora"><i class="fa-brands fa-quora"></i></a>
+                    <a href="https://wa.me/" class="social-btn-pro" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SERVICE ORDER / CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('checkoutModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="modal-title">Service Engagement</h3>
+            <p class="modal-subtitle" id="modalServiceSubtitle">Selected: Website & App Defense</p>
+
+            <div class="alert-box alert-success" id="orderSuccessAlert">Order Submitted Successfully! Redirecting...</div>
+
+            <form id="serviceOrderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="orderName" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" id="orderEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" id="orderPhone" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" id="orderGender" required>
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-input" id="orderAge" min="18" max="90" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-input" id="orderCountry" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Problem Sharing / Technical Scope</label>
+                    <textarea class="form-textarea" id="orderProblem" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Select Payment Gateway</label>
+                    <div class="payment-methods-grid">
+                        <div class="pay-option selected" onclick="selectPayment(this, 'Card')">Debit / Credit</div>
+                        <div class="pay-option" onclick="selectPayment(this, 'bKash')">bKash</div>
+                        <div class="pay-option" onclick="selectPayment(this, 'Nagad')">Nagad</div>
+                        <div class="pay-option" onclick="selectPayment(this, 'Rocket')">Rocket</div>
+                        <div class="pay-option" onclick="selectPayment(this, 'SSLCommerz')">SSLCommerz</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 15px;">
+                    Confirm Order & Pay (<span id="payAmountDisplay">$499</span>)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- AUTHENTICATION MODAL -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('authModal')"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="modal-title" id="authTitle">Account Sign In</h3>
+            <p class="modal-subtitle" id="authSubtitle">Access your cyber security portal</p>
+
+            <div class="alert-box alert-error" id="authErrorAlert"></div>
+            <div class="alert-box alert-success" id="authSuccessAlert"></div>
+
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group" id="nameGroup" style="display: none;">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="authName">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="authEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="authPassword" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="authSubmitBtn" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    Sign In
+                </button>
+
+                <div style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <span id="authToggleText">Don't have an account?</span>
+                    <a href="javascript:void(0)" onclick="toggleAuthMode()" id="authToggleLink" style="color: var(--accent-blue-bright); font-weight:600; text-decoration:none; margin-left: 4px;">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Farhan An Nafi. All Rights Reserved. Enterprise Cybersecurity Operations.</p>
+    </footer>
+
+    <script>
+        // AUTHENTICATION ENGINE
+        let currentAuthMode = 'login';
+        let activeUser = JSON.parse(localStorage.getItem('secPortalUser')) || null;
+        let selectedPaymentGateway = 'Card';
+        let currentSelectedService = '';
+        let currentSelectedPrice = 0;
+
+        function updateAuthUI() {
+            const container = document.getElementById('authContainer');
+            if (activeUser) {
+                container.innerHTML = `
+                    <div class="user-pill"><i class="fa-solid fa-user-check"></i> ${activeUser.name}</div>
+                    <button class="btn-nav-auth" onclick="handleLogout()">Sign Out</button>
+                `;
+            } else {
+                container.innerHTML = `
+                    <button class="btn-nav-auth" onclick="openAuthModal('login')">Sign In</button>
+                    <button class="btn-nav-auth" style="background:var(--accent-blue);" onclick="openAuthModal('register')">Register</button>
+                `;
+            }
+        }
+
+        function openAuthModal(mode) {
+            currentAuthMode = mode;
+            const nameGroup = document.getElementById('nameGroup');
+            const authName = document.getElementById('authName');
+            const title = document.getElementById('authTitle');
+            const subtitle = document.getElementById('authSubtitle');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const toggleText = document.getElementById('authToggleText');
+            const toggleLink = document.getElementById('authToggleLink');
+            
+            document.getElementById('authErrorAlert').style.display = 'none';
+            document.getElementById('authSuccessAlert').style.display = 'none';
+
+            if (mode === 'register') {
+                title.innerText = 'Create Account';
+                subtitle.innerText = 'Register for access to portal features';
+                nameGroup.style.display = 'block';
+                authName.required = true;
+                submitBtn.innerText = 'Register Account';
+                toggleText.innerText = 'Already have an account?';
+                toggleLink.innerText = 'Sign In';
+            } else {
+                title.innerText = 'Account Sign In';
+                subtitle.innerText = 'Access your cyber security portal';
+                nameGroup.style.display = 'none';
+                authName.required = false;
+                submitBtn.innerText = 'Sign In';
+                toggleText.innerText = "Don't have an account?";
+                toggleLink.innerText = 'Register';
+            }
+            document.getElementById('authModal').style.display = 'flex';
+        }
+
+        function toggleAuthMode() {
+            openAuthModal(currentAuthMode === 'login' ? 'register' : 'login');
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value.trim();
+            const password = document.getElementById('authPassword').value;
+            const name = document.getElementById('authName').value.trim();
+
+            const errAlert = document.getElementById('authErrorAlert');
+            const succAlert = document.getElementById('authSuccessAlert');
+            errAlert.style.display = 'none';
+            succAlert.style.display = 'none';
+
+            let users = JSON.parse(localStorage.getItem('secPortalUsersDB')) || [];
+
+            if (currentAuthMode === 'register') {
+                const userExists = users.some(u => u.email === email);
+                if (userExists) {
+                    errAlert.innerText = 'An account with this email already exists.';
+                    errAlert.style.display = 'block';
+                    return;
+                }
+                const newUser = { name, email, password };
+                users.push(newUser);
+                localStorage.setItem('secPortalUsersDB', JSON.stringify(users));
+
+                activeUser = { name: newUser.name, email: newUser.email };
+                localStorage.setItem('secPortalUser', JSON.stringify(activeUser));
+
+                succAlert.innerText = 'Registration successful! Logging in...';
+                succAlert.style.display = 'block';
+
+                setTimeout(() => {
+                    closeModal('authModal');
+                    updateAuthUI();
+                }, 1000);
+            } else {
+                const foundUser = users.find(u => u.email === email && u.password === password);
+                if (!foundUser) {
+                    errAlert.innerText = 'Invalid email address or password.';
+                    errAlert.style.display = 'block';
+                    return;
+                }
+                activeUser = { name: foundUser.name, email: foundUser.email };
+                localStorage.setItem('secPortalUser', JSON.stringify(activeUser));
+
+                succAlert.innerText = 'Authentication successful!';
+                succAlert.style.display = 'block';
+
+                setTimeout(() => {
+                    closeModal('authModal');
+                    updateAuthUI();
+                }, 800);
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('secPortalUser');
+            activeUser = null;
+            updateAuthUI();
+        }
+
+        // CHECKOUT & SERVICE REQUEST ENGINE
+        function initiateCheckout(serviceName, price) {
+            if (!activeUser) {
+                openAuthModal('login');
+                document.getElementById('authErrorAlert').innerText = 'Please sign in or register to request a service.';
+                document.getElementById('authErrorAlert').style.display = 'block';
+                return;
+            }
+
+            currentSelectedService = serviceName;
+            currentSelectedPrice = price;
+
+            document.getElementById('modalServiceSubtitle').innerText = `Selected: ${serviceName}`;
+            document.getElementById('payAmountDisplay').innerText = `$${price}`;
+            
+            document.getElementById('orderName').value = activeUser.name || '';
+            document.getElementById('orderEmail').value = activeUser.email || '';
+
+            document.getElementById('orderSuccessAlert').style.display = 'none';
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function selectPayment(element, method) {
+            document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPaymentGateway = method;
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const succAlert = document.getElementById('orderSuccessAlert');
+            succAlert.style.display = 'block';
+
+            setTimeout(() => {
+                closeModal('checkoutModal');
+                document.getElementById('serviceOrderForm').reset();
+            }, 1800);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // TAB SWITCHING SCRIPT
+        function openTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            const buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // CAROUSEL SCROLL SCRIPT
+        function scrollCarousel(direction) {
+            const container = document.getElementById('reviewsCarousel');
+            container.scrollBy({ left: direction * 300, behavior: 'smooth' });
+        }
+
+        // TYPING EFFECT
+        const words = ["PENETRATION TESTING", "THREAT INTELLIGENCE", "CLOUD DEFENSE", "SYSTEM HARDENING"];
+        let wordIdx = 0;
+
+        function typingEffect() {
+            let word = words[wordIdx].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typed').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[wordIdx].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typed').innerHTML = word.join("");
+                } else {
+                    wordIdx = (wordIdx + 1) % words.length;
+                    setTimeout(typingEffect, 500);
+                    return false;
+                }
+                setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+
+        // INIT
+        window.onload = function() {
+            updateAuthUI();
+            typingEffect();
+        };
+    </script>
+</body>
+</html>
