@@ -1244,6 +1244,38 @@
         @media(max-width:700px) { header#hero.hero-premium { padding:145px 22px 75px; } .hero-layout { display:flex; flex-direction:column; align-items:stretch; gap:30px; } #hero .hero-content { max-width:100%; } .hero-eyebrow { font-size:.58rem; letter-spacing:.08em; margin-bottom:24px; } #hero .hero-title { font-size:clamp(2.8rem,12vw,4.2rem); max-width:620px; } #hero .hero-tagline { font-size:.67rem; letter-spacing:.07em; } #hero .subtitle { font-size:.96rem; } .hero-proofline { gap:10px 14px; font-size:.67rem; margin-top:25px; } .hero-visual { width:min(100%,410px); align-self:center; } .visual-caption { right:-1%; bottom:10%; transform:scale(.88); transform-origin:right bottom; } .hero-bottom-rule { left:22px; right:22px; bottom:18px; font-size:.5rem; letter-spacing:.06em; gap:14px; } }
         @media(prefers-reduced-motion:reduce) { .orbit-two { animation:none; } }
 
+    
+        /* Added interactive security toolkit */
+        #toolkit.toolkit-section { padding: 90px 7%; background: var(--bg-secondary); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .toolkit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; max-width:1250px; margin:36px auto 0; }
+        .toolkit-card { min-width:0; padding:25px; border:1px solid var(--card-border); border-radius:18px; background:var(--card-bg); box-shadow:0 14px 40px rgba(0,0,0,.14); }
+        .toolkit-card-icon { width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:var(--accent-blue-bright);background:var(--accent-glow);font-size:18px;margin-bottom:18px; }
+        .toolkit-card h3 { font-size:1.08rem; margin:0 0 10px; }
+        .toolkit-card p { line-height:1.65; opacity:.8; font-size:.9rem; margin:0 0 18px; }
+        .toolkit-button { display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:10px 13px;border:1px solid var(--card-border);border-radius:10px;background:transparent;color:var(--accent-white);font:inherit;font-size:.84rem;cursor:pointer;transition:.2s; }
+        .toolkit-button:hover,.toolkit-button.active { border-color:var(--accent-blue-bright);color:var(--accent-blue-bright); }
+        .threat-feed { display:grid;gap:10px;margin:16px 0; }
+        .threat-feed>div { display:grid;grid-template-columns:10px 1fr auto;align-items:center;gap:9px;font-size:.78rem;padding:10px;background:rgba(127,127,127,.07);border-radius:8px; }
+        .threat-feed small { opacity:.6;font-size:.62rem;letter-spacing:.08em; }
+        .threat-dot { width:8px;height:8px;border-radius:50%;background:#f87171; }.threat-mid{background:#fbbf24}.threat-low{background:#34d399}
+        .case-study-list { display:grid;gap:8px;margin:16px 0; }
+        .case-study-list details { padding:11px 12px;border:1px solid var(--card-border);border-radius:9px;font-size:.83rem; }
+        .case-study-list summary { cursor:pointer;font-weight:600; }
+        .case-study-list details p { margin:10px 0 0;font-size:.8rem; }
+        .toolkit-note { display:block;font-size:.72rem;opacity:.62;line-height:1.5;margin-top:12px; }
+        .security-checklist { display:grid;gap:13px;margin:18px 0; }
+        .security-checklist label { display:flex;gap:10px;align-items:flex-start;font-size:.82rem;line-height:1.45;cursor:pointer; }
+        .security-checklist input { accent-color:var(--accent-blue-bright);margin-top:3px; }
+        .checklist-progress { height:6px;background:rgba(127,127,127,.18);border-radius:20px;overflow:hidden;margin:18px 0 8px; }
+        .checklist-progress>div { height:100%;width:0;background:var(--accent-blue-bright);transition:width .2s; }
+        .language-switch { display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px; }
+        body.toolkit-light { --bg-primary:#f5f8fc;--bg-secondary:#eaf0f7;--card-bg:rgba(255,255,255,.94);--card-border:rgba(22,50,80,.18);--accent-white:#152236;--accent-blue-bright:#087f66;--accent-glow:rgba(8,127,102,.12);color:#152236; }
+        body.toolkit-light nav { background:rgba(245,248,252,.94); }
+        body.toolkit-light .nav-links a, body.toolkit-light .toolkit-button { color:#152236; }
+        body.toolkit-light .toolkit-button:hover,body.toolkit-light .toolkit-button.active { color:#087f66; }
+        @media(max-width:1000px){.toolkit-grid{grid-template-columns:repeat(2,minmax(0,1fr));}#toolkit.toolkit-section{padding:70px 5%;}}
+        @media(max-width:620px){.toolkit-grid{grid-template-columns:1fr;gap:14px}.toolkit-card{padding:21px}#toolkit.toolkit-section{padding:56px 5%;}}
+
     </style>
 </head>
 <body>
@@ -1256,6 +1288,7 @@
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#overview">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#toolkit">Toolkit</a></li>
                 <li><a href="#reviews">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1480,6 +1513,68 @@
                         <button class="btn-request" onclick="initiateCheckout('Security Consulting', 299)">Order Now</button>
                     </div>
                 </div>
+            </div>
+        </section>
+
+
+        <!-- INTERACTIVE SECURITY TOOLKIT: educational demos, not live monitoring -->
+        <section id="toolkit" class="toolkit-section">
+            <div class="section-header">
+                <h2 class="section-title" data-toolkit-en="Security <span>Toolkit</span>" data-toolkit-bn="সিকিউরিটি <span>টুলকিট</span>">Security <span>Toolkit</span></h2>
+                <p class="subtitle" data-toolkit-en="Five practical extras to explore. Threat examples are simulated for demonstration." data-toolkit-bn="ব্যবহারিক পাঁচটি নতুন সুবিধা। থ্রেট উদাহরণগুলো শুধু ডেমোর জন্য সিমুলেটেড।">Five practical extras to explore. Threat examples are simulated for demonstration.</p>
+            </div>
+            <div class="toolkit-grid">
+                <article class="toolkit-card toolkit-theme-card">
+                    <div class="toolkit-card-icon"><i class="fas fa-circle-half-stroke"></i></div>
+                    <h3 data-toolkit-en="Appearance switch" data-toolkit-bn="থিম পরিবর্তন">Appearance switch</h3>
+                    <p data-toolkit-en="Switch the page between the current dark look and a brighter reading mode." data-toolkit-bn="বর্তমান ডার্ক লুক এবং উজ্জ্বল রিডিং মোডের মধ্যে পরিবর্তন করুন।">Switch the page between the current dark look and a brighter reading mode.</p>
+                    <button class="toolkit-button" id="themeToggle" type="button" aria-pressed="false"><i class="fas fa-sun"></i> <span data-toolkit-en="Toggle light mode" data-toolkit-bn="লাইট মোড চালু/বন্ধ">Toggle light mode</span></button>
+                </article>
+                <article class="toolkit-card">
+                    <div class="toolkit-card-icon"><i class="fas fa-tower-broadcast"></i></div>
+                    <h3 data-toolkit-en="Threat activity demo" data-toolkit-bn="থ্রেট অ্যাক্টিভিটি ডেমো">Threat activity demo</h3>
+                    <p data-toolkit-en="A sample feed to learn common security alert patterns. This is not connected to live systems." data-toolkit-bn="সাধারণ নিরাপত্তা সতর্কতা বোঝার নমুনা ফিড। এটি লাইভ সিস্টেমের সঙ্গে যুক্ত নয়।">A sample feed to learn common security alert patterns. This is not connected to live systems.</p>
+                    <div class="threat-feed" id="threatFeed" aria-live="polite">
+                        <div><span class="threat-dot threat-high"></span><span>Phishing simulation detected</span><small>DEMO</small></div>
+                        <div><span class="threat-dot threat-mid"></span><span>Unusual login pattern</span><small>DEMO</small></div>
+                        <div><span class="threat-dot threat-low"></span><span>Patch review reminder</span><small>DEMO</small></div>
+                    </div>
+                    <button class="toolkit-button" id="refreshThreats" type="button"><i class="fas fa-rotate"></i> <span data-toolkit-en="Refresh demo feed" data-toolkit-bn="ডেমো ফিড রিফ্রেশ">Refresh demo feed</span></button>
+                </article>
+                <article class="toolkit-card">
+                    <div class="toolkit-card-icon"><i class="fas fa-folder-open"></i></div>
+                    <h3 data-toolkit-en="Case study concepts" data-toolkit-bn="কেস স্টাডি কনসেপ্ট">Case study concepts</h3>
+                    <p data-toolkit-en="Example project ideas you can replace with your own verified work." data-toolkit-bn="নিজের যাচাইযোগ্য কাজ দিয়ে বদলে নেওয়ার মতো প্রজেক্টের উদাহরণ।">Example project ideas you can replace with your own verified work.</p>
+                    <div class="case-study-list">
+                        <details><summary>01 · Web app security review</summary><p>Demo concept: map common risks, document findings, and recommend remediation.</p></details>
+                        <details><summary>02 · Phishing awareness lab</summary><p>Demo concept: build a safe training scenario and explain user reporting steps.</p></details>
+                        <details><summary>03 · Home network hardening</summary><p>Demo concept: inventory devices, improve router settings, and review access.</p></details>
+                    </div>
+                    <span class="toolkit-note">Illustrative concepts · not claimed client engagements</span>
+                </article>
+                <article class="toolkit-card">
+                    <div class="toolkit-card-icon"><i class="fas fa-list-check"></i></div>
+                    <h3 data-toolkit-en="Personal security checklist" data-toolkit-bn="নিজস্ব নিরাপত্তা চেকলিস্ট">Personal security checklist</h3>
+                    <p data-toolkit-en="Tick off the basics and track your progress on this device." data-toolkit-bn="প্রাথমিক নিরাপত্তার কাজগুলো টিক দিয়ে অগ্রগতি দেখুন।">Tick off the basics and track your progress on this device.</p>
+                    <div class="security-checklist" id="securityChecklist">
+                        <label><input type="checkbox"> Use a password manager</label>
+                        <label><input type="checkbox"> Enable multi-factor authentication</label>
+                        <label><input type="checkbox"> Update OS and browser</label>
+                        <label><input type="checkbox"> Back up important files</label>
+                    </div>
+                    <div class="checklist-progress"><div id="checklistBar"></div></div>
+                    <small id="checklistCount" aria-live="polite">0 of 4 completed</small>
+                </article>
+                <article class="toolkit-card">
+                    <div class="toolkit-card-icon"><i class="fas fa-language"></i></div>
+                    <h3 data-toolkit-en="Language helper" data-toolkit-bn="ভাষা পরিবর্তন">Language helper</h3>
+                    <p data-toolkit-en="Switch the Toolkit section between English and Bangla." data-toolkit-bn="টুলকিট অংশের ভাষা ইংরেজি ও বাংলার মধ্যে বদলান।">Switch the Toolkit section between English and Bangla.</p>
+                    <div class="language-switch" role="group" aria-label="Toolkit language">
+                        <button class="toolkit-button language-choice active" data-language="en" type="button">English</button>
+                        <button class="toolkit-button language-choice" data-language="bn" type="button">বাংলা</button>
+                    </div>
+                    <small class="toolkit-note" data-toolkit-en="Only Toolkit text changes; the rest of the site stays as it is." data-toolkit-bn="শুধু টুলকিটের লেখা বদলাবে; সাইটের বাকি অংশ আগের মতো থাকবে।">Only Toolkit text changes; the rest of the site stays as it is.</small>
+                </article>
             </div>
         </section>
 
@@ -1889,6 +1984,52 @@
             updateAuthUI();
             typingEffect();
         };
+
+        // Toolkit extras: all demos are local and clearly labelled; no live threat data is fetched.
+        (function initSecurityToolkit() {
+            const themeButton = document.getElementById('themeToggle');
+            if (themeButton) themeButton.addEventListener('click', function () {
+                const enabled = document.body.classList.toggle('toolkit-light');
+                themeButton.setAttribute('aria-pressed', String(enabled));
+                const label = themeButton.querySelector('span');
+                if (label) label.textContent = enabled ? 'Switch to dark mode' : 'Toggle light mode';
+            });
+
+            const feedButton = document.getElementById('refreshThreats');
+            const feed = document.getElementById('threatFeed');
+            if (feedButton && feed) feedButton.addEventListener('click', function () {
+                const samples = [
+                    ['Phishing simulation detected', 'threat-high'],
+                    ['Unusual login pattern', 'threat-mid'],
+                    ['Patch review reminder', 'threat-low'],
+                    ['MFA coverage review', 'threat-low'],
+                    ['Suspicious attachment exercise', 'threat-high'],
+                    ['Access review due', 'threat-mid']
+                ];
+                const chosen = samples.sort(() => Math.random() - 0.5).slice(0, 3);
+                feed.innerHTML = chosen.map(item => '<div><span class="threat-dot ' + item[1] + '"></span><span>' + item[0] + '</span><small>DEMO</small></div>').join('');
+            });
+
+            const checks = Array.from(document.querySelectorAll('#securityChecklist input[type="checkbox"]'));
+            const count = document.getElementById('checklistCount');
+            const bar = document.getElementById('checklistBar');
+            function updateChecklist() {
+                const done = checks.filter(input => input.checked).length;
+                if (count) count.textContent = done + ' of ' + checks.length + ' completed';
+                if (bar) bar.style.width = (checks.length ? done / checks.length * 100 : 0) + '%';
+            }
+            checks.forEach(input => input.addEventListener('change', updateChecklist));
+            updateChecklist();
+
+            const languageButtons = Array.from(document.querySelectorAll('.language-choice'));
+            const languageNodes = Array.from(document.querySelectorAll('[data-toolkit-en][data-toolkit-bn]'));
+            languageButtons.forEach(button => button.addEventListener('click', function () {
+                const lang = button.dataset.language === 'bn' ? 'bn' : 'en';
+                languageNodes.forEach(node => node.innerHTML = node.getAttribute('data-toolkit-' + lang));
+                languageButtons.forEach(item => item.classList.toggle('active', item === button));
+            }));
+        })();
+
     </script>
 </body>
 </html>
