@@ -1074,6 +1074,132 @@
             }
         }
 
+
+        /* OPTION 2 — Premium Hero / Elegant & Futuristic */
+        header#hero {
+            position: relative;
+            isolation: isolate;
+            min-height: min(860px, 94vh);
+            padding: 150px 24px 100px;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 50% 42%, rgba(62, 133, 82, .17), transparent 34%),
+                radial-gradient(ellipse at 50% 100%, rgba(42, 92, 58, .12), transparent 48%);
+        }
+        header#hero::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: min(760px, 90vw);
+            aspect-ratio: 1;
+            left: 50%;
+            top: 46%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(91, 171, 109, .15) 0%, rgba(40, 90, 55, .07) 34%, transparent 68%);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+        header#hero::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            opacity: .22;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(180,220,190,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(180,220,190,.035) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 72%, transparent);
+        }
+        #hero .hero-content {
+            width: min(100%, 980px);
+            position: relative;
+            animation: heroRise .9s cubic-bezier(.2,.7,.2,1) both;
+        }
+        #hero .hero-content::before {
+            content: "INDEPENDENT SECURITY PRACTICE  /  2026";
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            padding: 8px 13px;
+            border: 1px solid rgba(160, 205, 170, .18);
+            border-radius: 999px;
+            background: rgba(15, 23, 17, .62);
+            color: #a9c7ad;
+            font: 500 .68rem/1.2 'Fira Code', monospace;
+            letter-spacing: .13em;
+        }
+        #hero .hero-title {
+            max-width: 950px;
+            margin: 0 auto 25px;
+            font-size: clamp(3rem, 6.7vw, 6.1rem);
+            font-weight: 600;
+            line-height: 1.02;
+            letter-spacing: -.075em;
+            background: linear-gradient(145deg, #fbfdf9 12%, #d7e8d9 52%, #7db68b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-wrap: balance;
+        }
+        #hero .hero-tagline {
+            margin: 0 auto 22px;
+            color: #b2c5b5;
+            font-size: clamp(.72rem, 1.4vw, .88rem);
+            letter-spacing: .16em;
+            line-height: 1.8;
+        }
+        #hero .typed-text {
+            color: #9be5ad;
+            border-bottom: 1px solid rgba(155,229,173,.7);
+            padding-bottom: 3px;
+        }
+        #hero .subtitle {
+            max-width: 640px;
+            margin: 0 auto 36px;
+            color: #9aa79c;
+            font-size: clamp(1rem, 1.7vw, 1.12rem);
+            font-weight: 400;
+            line-height: 1.9;
+        }
+        #hero .cta-group { gap: 12px; }
+        #hero .btn {
+            min-height: 50px;
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-size: .88rem;
+            letter-spacing: -.01em;
+        }
+        #hero .btn-primary {
+            color: #08110a;
+            background: linear-gradient(135deg, #b9edc4, #78c98d);
+            box-shadow: 0 8px 30px rgba(95, 180, 113, .14);
+        }
+        #hero .btn-primary:hover {
+            background: #d0f4d7;
+            box-shadow: 0 12px 38px rgba(95, 180, 113, .24);
+        }
+        #hero .btn-secondary {
+            background: rgba(255,255,255,.025);
+            border-color: rgba(190,220,200,.2);
+            color: #e0e9e1;
+        }
+        #hero .btn-secondary:hover {
+            border-color: rgba(155,229,173,.55);
+            background: rgba(117,224,161,.06);
+        }
+        @keyframes heroRise {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            header#hero { min-height: 690px; padding: 175px 20px 70px; }
+            #hero .hero-content::before { font-size: .57rem; letter-spacing: .08em; margin-bottom: 24px; }
+            #hero .hero-title { font-size: clamp(2.65rem, 12vw, 4rem); letter-spacing: -.07em; }
+            #hero .hero-tagline { line-height: 2.1; letter-spacing: .09em; }
+            #hero .subtitle { line-height: 1.8; }
+        }
+
     </style>
 </head>
 <body>
