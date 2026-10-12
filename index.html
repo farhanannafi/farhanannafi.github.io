@@ -1200,6 +1200,50 @@
             #hero .subtitle { line-height: 1.8; }
         }
 
+    
+        /* OPTION 2: real two-column editorial hero, not a palette-only change */
+        header#hero.hero-premium { display:block; position:relative; isolation:isolate; min-height:780px; height:min(900px,100svh); padding:150px max(5.5vw,28px) 68px; text-align:left; overflow:hidden; background:radial-gradient(ellipse at 72% 46%,rgba(65,130,79,.17),transparent 31%),radial-gradient(ellipse at 14% 82%,rgba(34,74,45,.13),transparent 38%),#090d0a; }
+        header#hero.hero-premium::before { content:""; position:absolute; z-index:-1; width:680px; height:680px; right:3%; top:8%; border-radius:50%; background:radial-gradient(circle,rgba(104,191,121,.12),rgba(42,87,52,.05) 42%,transparent 70%); filter:blur(16px); }
+        header#hero.hero-premium::after { content:""; position:absolute; z-index:-1; inset:0; opacity:.18; pointer-events:none; background-image:linear-gradient(rgba(200,230,205,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(200,230,205,.055) 1px,transparent 1px); background-size:68px 68px; mask-image:linear-gradient(90deg,transparent,#000 20%,#000 82%,transparent); }
+        .hero-layout { max-width:1280px; height:100%; min-height:560px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr); align-items:center; gap:clamp(28px,5vw,76px); }
+        #hero .hero-content { width:auto; max-width:650px; margin:0; position:relative; z-index:2; animation:heroRise .8s ease both; }
+        #hero .hero-content::before { content:none; }
+        .hero-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:30px; color:#b2c9b6; font:500 .68rem/1.5 'Fira Code',monospace; letter-spacing:.13em; }
+        .status-dot,.caption-indicator { width:7px; height:7px; border-radius:50%; background:#8de3a1; box-shadow:0 0 14px rgba(141,227,161,.7); flex:none; }
+        .eyebrow-divider { color:#526456; }
+        #hero .hero-title { max-width:690px; margin:0 0 26px; font-size:clamp(3.2rem,5.5vw,5.55rem); font-weight:600; line-height:.99; letter-spacing:-.075em; text-align:left; background:linear-gradient(145deg,#f6faf5 8%,#d8e8da 54%,#82b88e 100%); -webkit-background-clip:text; background-clip:text; text-wrap:balance; }
+        #hero .hero-title-accent { color:#91d5a0; }
+        #hero .hero-tagline { margin:0 0 20px; color:#b3c6b6; font-size:.77rem; letter-spacing:.11em; line-height:1.9; }
+        #hero .typed-text { color:#a0e9b0; border-bottom:1px solid rgba(160,233,176,.65); padding-bottom:3px; }
+        #hero .subtitle { max-width:550px; margin:0 0 30px; color:#a0aaa1; font-size:1.02rem; line-height:1.9; }
+        #hero .cta-group { justify-content:flex-start; flex-wrap:wrap; gap:12px; }
+        #hero .btn { min-height:49px; padding:13px 20px; border-radius:999px; font-size:.85rem; }
+        #hero .btn-primary { color:#0a140c; background:linear-gradient(135deg,#c0efc9,#82d394); box-shadow:0 10px 35px rgba(93,174,109,.15); }
+        #hero .btn-primary:hover { background:#d6f6dc; transform:translateY(-2px); }
+        #hero .btn-secondary { color:#e1e9e2; border:1px solid rgba(188,217,193,.2); background:rgba(255,255,255,.025); }
+        #hero .btn-secondary:hover { border-color:rgba(155,229,173,.5); }
+        .hero-cta-arrow { font-size:.72rem; opacity:.65; margin-left:2px; }
+        .hero-proofline { display:flex; flex-wrap:wrap; gap:18px; margin-top:32px; color:#849487; font-size:.72rem; }
+        .hero-proofline span { display:flex; align-items:center; gap:7px; } .hero-proofline i { color:#80c991; font-size:.7rem; }
+        .hero-visual { position:relative; width:100%; max-width:570px; aspect-ratio:1/1; justify-self:end; isolation:isolate; }
+        .visual-grid { position:absolute; inset:10%; border-radius:50%; opacity:.3; background-image:linear-gradient(rgba(170,215,179,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(170,215,179,.1) 1px,transparent 1px); background-size:28px 28px; mask-image:radial-gradient(circle,#000 0%,transparent 72%); }
+        .visual-glow { position:absolute; width:65%; height:65%; left:17.5%; top:17.5%; border-radius:50%; background:radial-gradient(circle,rgba(104,195,124,.24),rgba(49,106,62,.1) 42%,transparent 72%); filter:blur(15px); }
+        .visual-orbit { position:absolute; border:1px solid rgba(148,207,158,.18); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+        .orbit-one { width:79%; height:79%; } .orbit-two { width:59%; height:59%; border-style:dashed; border-color:rgba(148,207,158,.25); animation:orbitTurn 55s linear infinite; }
+        .visual-core { position:absolute; left:50%; top:50%; width:35%; aspect-ratio:1; transform:translate(-50%,-50%); display:grid; place-items:center; border-radius:32% 32% 38% 38%; background:linear-gradient(145deg,rgba(152,226,166,.18),rgba(18,43,25,.55)); border:1px solid rgba(165,227,174,.4); box-shadow:0 0 75px rgba(91,185,111,.15),inset 0 0 36px rgba(119,211,136,.08); clip-path:polygon(50% 0,91% 18%,87% 68%,50% 100%,13% 68%,9% 18%); }
+        .core-inner { width:72%; height:72%; display:grid; place-items:center; clip-path:polygon(50% 0,91% 18%,87% 68%,50% 100%,13% 68%,9% 18%); background:linear-gradient(145deg,rgba(138,220,154,.2),rgba(16,34,21,.86)); color:#b4f0bf; font-size:clamp(2rem,4vw,3.6rem); text-shadow:0 0 28px rgba(143,232,160,.5); }
+        .visual-node { position:absolute; width:48px; height:48px; display:grid; place-items:center; border:1px solid rgba(163,220,172,.28); border-radius:16px; background:rgba(13,24,16,.9); color:#a5e7b1; box-shadow:0 12px 35px rgba(0,0,0,.25); }
+        .node-top { top:12%; left:calc(50% - 24px); } .node-right { right:9%; top:calc(50% - 24px); } .node-bottom { bottom:12%; left:calc(50% - 24px); } .node-left { left:9%; top:calc(50% - 24px); }
+        .visual-caption { position:absolute; right:0; bottom:12%; display:flex; align-items:center; gap:11px; padding:13px 15px; border:1px solid rgba(165,215,173,.18); border-radius:12px; background:rgba(12,19,14,.88); box-shadow:0 15px 50px rgba(0,0,0,.3); backdrop-filter:blur(16px); }
+        .visual-caption b,.visual-caption small { display:block; } .visual-caption b { color:#dce9dd; font:500 .64rem 'Fira Code',monospace; letter-spacing:.08em; } .visual-caption small { margin-top:5px; color:#83a18a; font:400 .58rem 'Fira Code',monospace; letter-spacing:.08em; } .visual-caption>i { margin-left:10px; color:#759b7b; font-size:.75rem; }
+        .visual-index { position:absolute; left:8%; bottom:10%; color:#78917c; font-size:.61rem; letter-spacing:.12em; } .visual-index span { color:#4c6851; }
+        .hero-bottom-rule { position:absolute; left:max(5.5vw,28px); right:max(5.5vw,28px); bottom:27px; display:flex; justify-content:space-between; padding-top:16px; border-top:1px solid rgba(190,220,200,.12); color:#718174; font:500 .61rem 'Fira Code',monospace; letter-spacing:.13em; }
+        .hero-bottom-rule i { margin-left:8px; color:#9ccea5; }
+        @keyframes orbitTurn { to { transform:translate(-50%,-50%) rotate(360deg); } }
+        @media(max-width:1000px) { header#hero.hero-premium { height:auto; min-height:unset; padding-top:145px; padding-bottom:80px; } .hero-layout { grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:24px; min-height:560px; } #hero .hero-title { font-size:clamp(2.9rem,6vw,4.6rem); } .hero-visual { max-width:440px; } .visual-caption { right:-2%; } }
+        @media(max-width:700px) { header#hero.hero-premium { padding:145px 22px 75px; } .hero-layout { display:flex; flex-direction:column; align-items:stretch; gap:30px; } #hero .hero-content { max-width:100%; } .hero-eyebrow { font-size:.58rem; letter-spacing:.08em; margin-bottom:24px; } #hero .hero-title { font-size:clamp(2.8rem,12vw,4.2rem); max-width:620px; } #hero .hero-tagline { font-size:.67rem; letter-spacing:.07em; } #hero .subtitle { font-size:.96rem; } .hero-proofline { gap:10px 14px; font-size:.67rem; margin-top:25px; } .hero-visual { width:min(100%,410px); align-self:center; } .visual-caption { right:-1%; bottom:10%; transform:scale(.88); transform-origin:right bottom; } .hero-bottom-rule { left:22px; right:22px; bottom:18px; font-size:.5rem; letter-spacing:.06em; gap:14px; } }
+        @media(prefers-reduced-motion:reduce) { .orbit-two { animation:none; } }
+
     </style>
 </head>
 <body>
@@ -1223,16 +1267,28 @@
     </nav>
 
     <!-- HERO HEADER -->
-    <header id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Senior Cybersecurity Specialist & Threat Architect</h1>
-            <p class="hero-tagline mono">SPECIALIZING IN <span class="typed-text" id="typed"></span></p>
-            <p class="subtitle">Architecting enterprise security defenses, mitigating attack vulnerabilities, and conducting threat assessments globally.</p>
-            <div class="cta-group">
-                <a href="#services" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Explore Services</a>
-                <a href="#overview" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> Profile Overview</a>
+    <header id="hero" class="hero-premium">
+        <div class="hero-layout">
+            <div class="hero-content">
+                <div class="hero-eyebrow"><span class="status-dot"></span> INDEPENDENT SECURITY PRACTICE <span class="eyebrow-divider">/</span> 2026</div>
+                <h1 class="hero-title">Security built for a <span class="hero-title-accent">world that never stands still.</span></h1>
+                <p class="hero-tagline mono">SPECIALIZING IN <span class="typed-text" id="typed"></span></p>
+                <p class="subtitle">Architecting resilient defenses, uncovering attack paths, and turning complex cyber risks into clear, actionable security.</p>
+                <div class="cta-group">
+                    <a href="#services" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Explore Services <i class="fa-solid fa-arrow-up-right-from-square hero-cta-arrow"></i></a>
+                    <a href="#overview" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> Profile Overview</a>
+                </div>
+                <div class="hero-proofline"><span><i class="fa-solid fa-circle-check"></i> Threat-focused</span><span><i class="fa-solid fa-circle-check"></i> Practical defense</span><span><i class="fa-solid fa-circle-check"></i> Clear reporting</span></div>
+            </div>
+            <div class="hero-visual" aria-label="Abstract emerald cybersecurity shield illustration" role="img">
+                <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div><div class="visual-grid"></div><div class="visual-glow"></div>
+                <div class="visual-core"><div class="core-inner"><i class="fa-solid fa-shield-halved"></i></div></div>
+                <div class="visual-node node-top"><i class="fa-solid fa-lock"></i></div><div class="visual-node node-right"><i class="fa-solid fa-wave-square"></i></div><div class="visual-node node-bottom"><i class="fa-solid fa-bug-slash"></i></div><div class="visual-node node-left"><i class="fa-solid fa-fingerprint"></i></div>
+                <div class="visual-caption"><span class="caption-indicator"></span><span><b>DEFENSE SYSTEM</b><small>ACTIVE · MONITORING</small></span><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                <div class="visual-index mono">FIG. 01 <span>—</span> CYBER RESILIENCE</div>
             </div>
         </div>
+        <div class="hero-bottom-rule"><span>SECURITY • INTELLIGENCE • RESILIENCE</span><span>SCROLL TO EXPLORE <i class="fa-solid fa-arrow-down"></i></span></div>
     </header>
 
     <div class="container">
