@@ -1276,6 +1276,21 @@
         @media(max-width:1000px){.toolkit-grid{grid-template-columns:repeat(2,minmax(0,1fr));}#toolkit.toolkit-section{padding:70px 5%;}}
         @media(max-width:620px){.toolkit-grid{grid-template-columns:1fr;gap:14px}.toolkit-card{padding:21px}#toolkit.toolkit-section{padding:56px 5%;}}
 
+    
+        /* OPTION 1: nature-inspired, cinematic and minimal */
+        header#hero.hero-premium { background:radial-gradient(ellipse at 73% 38%,rgba(143,190,116,.14),transparent 28%),linear-gradient(180deg,#080e0b 0%,#0b1711 55%,#050907 100%); }
+        header#hero.hero-premium::after { opacity:.1; background-image:radial-gradient(1px 1px at 12% 18%,rgba(229,242,219,.65) 50%,transparent 100%),radial-gradient(1px 1px at 68% 13%,rgba(229,242,219,.5) 50%,transparent 100%),radial-gradient(1px 1px at 85% 27%,rgba(229,242,219,.55) 50%,transparent 100%); background-size:180px 140px,230px 190px,200px 160px; mask-image:linear-gradient(180deg,#000,transparent 90%); }
+        #hero .hero-title { font-family:Georgia,'Times New Roman',serif; font-weight:500; letter-spacing:-.055em; line-height:1.02; background:linear-gradient(145deg,#f4f4e9 12%,#dce7d3 58%,#a7c59c 100%); -webkit-background-clip:text; background-clip:text; }
+        #hero .hero-title-accent { color:#9bd28c; font-style:italic; }
+        .hero-visual { overflow:hidden; border-radius:46% 46% 18px 18px; aspect-ratio:.92/1; max-width:590px; background:radial-gradient(circle at 65% 28%,rgba(244,236,180,.22),transparent 3%),radial-gradient(circle at 65% 28%,rgba(244,236,180,.11),transparent 17%),linear-gradient(180deg,rgba(16,31,22,.1),rgba(5,10,7,.2)); border:1px solid rgba(174,206,154,.12); box-shadow:0 28px 90px rgba(0,0,0,.28); }
+        .hero-visual::before { content:""; position:absolute; z-index:0; width:32%; aspect-ratio:1; right:18%; top:12%; border-radius:50%; background:radial-gradient(circle at 38% 35%,#e8e6c5,#c1d0a1 58%,rgba(167,195,135,.35) 72%,transparent 74%); box-shadow:0 0 75px rgba(197,215,156,.17); }
+        .hero-visual::after { content:""; position:absolute; z-index:1; inset:35% -10% -1%; background:linear-gradient(160deg,transparent 0 12%,#1d3526 12.3% 31%,transparent 31.3%),linear-gradient(20deg,transparent 0 20%,#12281b 20.3% 46%,transparent 46.3%),linear-gradient(145deg,transparent 0 33%,#0d1d14 33.3% 63%,transparent 63.3%),linear-gradient(12deg,#060b08 0 28%,#0a140d 28.3% 45%,#07100a 45.3% 100%); }
+        .hero-visual .visual-grid,.hero-visual .visual-orbit,.hero-visual .visual-glow,.hero-visual .visual-core,.hero-visual .visual-node { display:none; }
+        .hero-visual .visual-caption { z-index:3; right:18px; bottom:22px; background:rgba(7,15,10,.78); border-color:rgba(174,206,154,.22); }
+        .hero-visual .visual-index { z-index:3; left:20px; bottom:30px; color:#a1b99a; }
+        .hero-bottom-rule { border-color:rgba(174,206,154,.16); color:#8fa28d; }
+        @media(max-width:800px){ .hero-visual { max-width:500px; justify-self:center; width:100%; aspect-ratio:1/1; } #hero .hero-title { font-size:clamp(2.8rem,10vw,4.4rem); } }
+
     </style>
 </head>
 <body>
@@ -1304,7 +1319,7 @@
         <div class="hero-layout">
             <div class="hero-content">
                 <div class="hero-eyebrow"><span class="status-dot"></span> INDEPENDENT SECURITY PRACTICE <span class="eyebrow-divider">/</span> 2026</div>
-                <h1 class="hero-title">Security built for a <span class="hero-title-accent">world that never stands still.</span></h1>
+                <h1 class="hero-title">Your Security <span class="hero-title-accent">Our Priority.</span></h1>
                 <p class="hero-tagline mono">SPECIALIZING IN <span class="typed-text" id="typed"></span></p>
                 <p class="subtitle">Architecting resilient defenses, uncovering attack paths, and turning complex cyber risks into clear, actionable security.</p>
                 <div class="cta-group">
